@@ -1,0 +1,98 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Doctors | Medicare{% endblock %}
+
+{% block content %}
+
+<section class="my-5">
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="text-center mb-5">
+            <span class="section-label">Our Team</span>
+            <h2 class="display-6 fw-bold mt-3">Meet Our Doctors</h2>
+            <p class="text-muted mx-auto doctors-copy">
+                Choose from trusted specialists, read their profiles, and book an appointment in a few simple steps.
+            </p>
+        </div>
+
+        <!-- DOCTORS GRID -->
+        <div class="row g-4 justify-content-center">
+
+            {% for doctor in doctors %}
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card border-0 shadow-sm h-100 doctor-card">
+
+                        <!-- ✅ IMAGE FIXED -->
+                        <img src="{{ doctor.image.url }}" 
+                             class="doctor-image" 
+                             alt="{{ doctor.name }}">
+
+                        <!-- BODY -->
+                        <div class="card-body d-flex flex-column">
+
+                            <!-- TOP -->
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="fw-bold mb-1">{{ doctor.name }}</h5>
+                                    <p class="text-primary mb-1">{{ doctor.specialty }}</p>
+
+                                    {% if doctor.department %}
+                                        <small class="text-muted">
+                                            {{ doctor.department.name }}
+                                        </small>
+                                    {% endif %}
+                                </div>
+
+                                <span class="badge rounded-pill text-bg-light">
+                                    {{ doctor.experience }} yrs
+                                </span>
+                            </div>
+
+                            <!-- DESCRIPTION -->
+                            <p class="text-muted mt-2">
+                                {{ doctor.short_bio }}
+                            </p>
+
+                            <!-- META -->
+                            <div class="doctor-meta mb-3">
+                                <span>
+                                    <i class="fa-regular fa-calendar me-2"></i>
+                                    {{ doctor.available_days }}
+                                </span>
+                            </div>
+
+                            <!-- BUTTONS -->
+                            <div class="mt-auto d-grid gap-2">
+                                <a href="{% url 'doctor_detail' doctor.id %}" 
+                                   class="btn btn-outline-primary">
+                                    View Profile
+                                </a>
+
+                                <a href="{% url 'book' doctor.id %}" 
+                                   class="btn btn-primary">
+                                    Book Appointment
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info text-center">
+                        No doctors have been added yet.
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

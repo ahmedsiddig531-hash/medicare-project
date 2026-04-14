@@ -1,0 +1,98 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ doctor.name }} | Medicare{% endblock %}
+
+{% block content %}
+
+<section class="my-5">
+    <div class="container">
+
+        <div class="row g-4 align-items-stretch">
+
+            <!-- LEFT IMAGE -->
+          <div class="col-lg-5">
+    <div class="card border-0 shadow-sm doctor-card h-100">
+
+        <div class="doctor-image-wrapper">
+            <img src="{{ doctor.image.url }}" 
+                 alt="{{ doctor.name }}">
+        </div>
+
+    </div>
+</div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm booking-card h-100">
+
+                    <div class="card-body p-4 p-lg-5">
+
+                        <span class="section-label">Doctor Details</span>
+
+                        <h2 class="fw-bold mt-3">{{ doctor.name }}</h2>
+
+                        <p class="text-primary fs-5 mb-1">
+                            {{ doctor.specialty }}
+                        </p>
+
+                        {% if doctor.department %}
+                            <p class="text-muted mb-3">
+                                Department: {{ doctor.department.name }}
+                            </p>
+                        {% endif %}
+
+                        <p class="mb-2">
+                            <i class="fa-regular fa-clock me-2 text-primary"></i>
+                            {{ doctor.available_days }}
+                        </p>
+
+                        <p class="mb-2">
+                            <i class="fa-solid fa-briefcase-medical me-2 text-primary"></i>
+                            {{ doctor.experience }} years of experience
+                        </p>
+
+                        <p class="text-muted mt-3">
+                            {{ doctor.short_bio }}
+                        </p>
+
+                        <a href="{% url 'book' doctor.id %}" 
+                           class="btn btn-primary mt-3 px-4">
+                            Book Appointment
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RECOMMENDED -->
+        <div class="mt-5">
+            <span class="section-label">Recommended Reading</span>
+
+            <div class="row g-4 mt-2">
+                {% for resource in related_resources %}
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm h-100 p-3">
+
+                            <div class="icon-circle mb-3">
+                                <i class="{{ resource.icon }}"></i>
+                            </div>
+
+                            <h5 class="fw-bold">{{ resource.title }}</h5>
+
+                            <p class="text-muted mb-0">
+                                {{ resource.summary|truncatechars:100 }}
+                            </p>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

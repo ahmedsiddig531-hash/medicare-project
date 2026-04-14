@@ -1,0 +1,27 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}{{ page_title }} | Medicare{% endblock %}
+
+{% block content %}
+<section class="my-5">
+    <span class="section-label">Resources</span>
+    <h2 class="fw-bold mt-3">{{ page_title }}</h2>
+    <p class="text-muted">Simple health content for this Medicare learning project.</p>
+
+    <div class="row g-4 mt-1">
+        {% for resource in resources %}
+            <div class="col-md-6 col-xl-4">
+                <div class="card border-0 shadow-sm h-100 feature-card">
+                    <div class="card-body">
+                        <div class="icon-circle mb-3"><i class="{{ resource.icon }}"></i></div>
+                        <h5 class="fw-bold">{{ resource.title }}</h5>
+                        <p class="text-muted mb-0">{{ resource.summary }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12"><div class="alert alert-info">No resources in this section yet.</div></div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

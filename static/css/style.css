@@ -1,0 +1,532 @@
+﻿body {
+    background: #f4f5fb;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* 🔥 prevents horizontal scroll */
+}
+
+/* HERO NAVBAR */
+.hero-panel {
+    background: #0f6d75;
+    border-radius: 40px;
+    padding: 30px 20px; /* 🔥 reduced side padding */
+    max-width: 1100px;
+    width: 100%; /* 🔥 important */
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+/* TOP ROW */
+.hero-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* 🔥 prevents breaking layout */
+    gap: 15px;
+}
+
+/* LOGO */
+.hero-logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #e6eff1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* 🔥 prevents squishing */
+}
+
+/* SEARCH */
+.hero-search-form {
+    flex: 1;
+    min-width: 200px; /* 🔥 prevents overflow */
+    max-width: 450px;
+    margin: 0 10px;
+    background: #e6eff1;
+    border-radius: 25px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-search-form input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+/* RIGHT BUTTONS */
+.hero-mini-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0; /* 🔥 prevent pushing layout */
+}
+
+.mini-pill {
+    background: #e6eff1;
+    padding: 8px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: black;
+    white-space: nowrap; /* 🔥 keeps text clean */
+}
+
+/* MENU */
+.hero-menu-row {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center; /* 🔥 center instead of space-between */
+    flex-wrap: wrap;
+    gap: 12px; /* 🔥 spacing between buttons */
+}
+
+.hero-menu-btn {
+    background: #e6eff1;
+    padding: 10px 16px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #333;
+    min-width: 120px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.hero-menu-btn:hover {
+    background: white;
+}
+/* FOOTER MAIN BOX */
+.site-footer {
+    padding: 40px 0;
+}
+
+/* TEAL CARD */
+.footer-card {
+    background: #2f9aa5; /* teal */
+    border-radius: 30px;
+    padding: 50px 60px;
+    max-width: 1100px;
+    margin: auto;
+    color: #e6f4f6;
+}
+
+/* TITLES */
+.footer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #e6f4f6;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+/* LINKS */
+.footer-links-block p {
+    margin: 12px 0;
+    font-size: 18px;
+    color: #e6f4f6;
+    text-decoration: underline;
+    font-family: 'Playfair Display', serif;
+}
+
+/* HOVER */
+.footer-links-block p:hover {
+    opacity: 0.8;
+}
+
+/* GRID ALIGN */
+.footer-card .row {
+    align-items: flex-start;
+}
+
+/* FOLLOW */
+.footer-follow {
+    margin-top: 30px;
+}
+
+/* SOCIAL ICONS */
+.social-row {
+    display: flex;
+    gap: 15px;
+    font-size: 20px;
+    color: #e6f4f6;
+}
+
+.social-row i:hover {
+    opacity: 0.7;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #d0e7ea;
+}
+/* ===== FEATURE STRIP PERFECT ALIGN ===== */
+.feature-strip-section {
+    margin-top: 70px;
+}
+
+/* center everything nicely */
+.feature-strip-section .row {
+    justify-content: center;
+}
+
+/* card */
+.simple-feature-card {
+    text-align: center;
+}
+
+/* IMAGE FIX */
+.simple-feature-image {
+    width: 230px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* TEXT FIX */
+.simple-feature-card p {
+    font-size: 18px;
+    line-height: 1.4;
+    max-width: 220px;
+    margin: 0 auto;
+}
+/* ===== INTRO TEXT FIX ===== */
+.showcase-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.showcase-copy {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 450px;
+}
+
+/* make spacing clean like your design */
+.home-intro-section .row {
+    align-items: center;
+}
+.showcase-image {
+    width: 420px;
+    border-radius: 20px;
+}
+/* ===== DOCTORS SECTION ===== */
+.doctors-preview-section {
+    margin-top: 80px;
+}
+
+/* TITLE */
+.preview-heading {
+    font-size: 34px;
+    font-weight: 600;
+}
+
+/* CARD */
+.doctor-preview-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.doctor-preview-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.doctor-preview-image {
+    width: 100%;
+    height: 220px; /* 🔥 fixes uneven images */
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* NAME */
+.doctor-preview-card h5 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* SPECIALTY */
+.doctor-preview-card p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+.doctor-preview-card .btn {
+    margin-top: auto; /* 🔥 keeps button aligned */
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+}
+/* DOCTORS PAGE FIX */
+.doctor-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.doctor-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.doctors-copy {
+    max-width: 600px;
+}
+/* FIX DOCTOR DETAIL PAGE */
+
+.doctor-card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* IMAGE FIX 🔥 */
+.doctor-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* TEXT SPACING */
+.section-label {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.doctor-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.big-section {
+    padding: 80px 0;
+}
+
+.big-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.big-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: auto;
+}
+
+.big-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.big-card:hover {
+    transform: translateY(-8px);
+}
+/* SECTION */
+.appointments-section {
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+/* HEADER */
+.appointments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.appointments-header h2 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+/* BUTTON */
+.btn-primary-custom {
+    background: #1e66f5;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* GRID */
+.appointments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.appointment-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* TOP */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.specialty {
+    color: #1e66f5;
+    font-weight: 500;
+}
+
+.date {
+    color: #666;
+    font-size: 14px;
+}
+
+/* STATUS */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-confirmed {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* BODY */
+.card-body {
+    margin-top: 15px;
+}
+
+.note {
+    color: #777;
+    margin-top: 10px;
+}
+
+/* CANCEL */
+.btn-cancel {
+    margin-top: 15px;
+    background: none;
+    border: 1px solid red;
+    color: red;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+/* EMPTY */
+.empty-box {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+}
+ 
+ 
+
+ .doctor-card {
+    overflow: hidden;
+    height: 100%;
+}
+
+.doctor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+}
+
+.doctor-card:hover {
+    transform: translateY(-5px);
+}
+/* Doctor Card */
+.doctor-card {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Doctor Image */
+.doctor-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Booking Card */
+.booking-card {
+    border-radius: 16px;
+}
+
+/* Section Label */
+.section-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c757d;
+    letter-spacing: 1px;
+}
+
+/* Button */
+.btn-primary {
+    border-radius: 8px;
+}
+
+/* Form Inputs */
+input, textarea, select {
+    border-radius: 8px !important;
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+    .doctor-image {
+        height: 180px;
+    }
+}
+ 
+.doctor-image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+ 
+.doctor-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}

@@ -1,0 +1,61 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}Search | Medicare{% endblock %}
+
+{% block content %}
+<section class="my-5">
+    <span class="section-label">Search</span>
+    <h2 class="fw-bold mt-3">Results for "{{ query }}"</h2>
+    <p class="text-muted">Use the search box to find doctors, departments, and health resources.</p>
+
+    <div class="row g-4 mt-2">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="fw-bold mb-3">Doctors</h4>
+                    {% for doctor in doctors %}
+                        <div class="mb-3 pb-3 border-bottom">
+                            <h6 class="fw-bold mb-1">{{ doctor.name }}</h6>
+                            <p class="text-muted mb-2">{{ doctor.specialty }}</p>
+                            <a href="{% url 'doctor_detail' doctor.id %}">View profile</a>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted mb-0">No matching doctors.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="fw-bold mb-3">Departments</h4>
+                    {% for department in departments %}
+                        <div class="mb-3 pb-3 border-bottom">
+                            <h6 class="fw-bold mb-1">{{ department.name }}</h6>
+                            <p class="text-muted mb-0">{{ department.description }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted mb-0">No matching departments.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h4 class="fw-bold mb-3">Resources</h4>
+                    {% for resource in resources %}
+                        <div class="mb-3 pb-3 border-bottom">
+                            <h6 class="fw-bold mb-1">{{ resource.title }}</h6>
+                            <p class="text-muted mb-2">{{ resource.summary|truncatechars:100 }}</p>
+                            <a href="{% url 'resource_list' resource.category %}">Open section</a>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted mb-0">No matching resources.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

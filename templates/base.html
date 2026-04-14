@@ -1,0 +1,164 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Medicare{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=123">
+</head>
+
+<body>
+<div class="page-wrap">
+
+    <!-- ✅ HERO NAVBAR -->
+    <header class="top-navbar-wrap">
+        <div class="container">
+
+            <div class="hero-panel">
+
+                <!-- TOP ROW -->
+                <div class="hero-top-row">
+
+                    <!-- LOGO -->
+                    <div class="hero-logo-circle">
+                        <div class="hero-logo-mark">M</div>
+                        <div class="hero-logo-text">Medicare</div>
+                    </div>
+
+                    <!-- SEARCH -->
+                    <form method="get" action="{% url 'search' %}" class="hero-search-form">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" name="q" placeholder="Search doctors, treatments">
+                    </form>
+
+                    <!-- RIGHT ACTIONS -->
+                    <div class="hero-mini-actions">
+    {% if user.is_authenticated %}
+
+        <a href="{% url 'profile' %}" class="mini-pill">
+            <i class="fa-regular fa-user"></i> Profile
+        </a>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="mini-pill">
+                Logout
+            </button>
+        </form>
+
+    {% else %}
+
+        <a href="{% url 'login' %}" class="mini-pill">
+            <i class="fa-regular fa-user"></i> Login
+        </a>
+
+        <a href="{% url 'register' %}" class="mini-pill">
+            Register
+        </a>
+
+    {% endif %}
+</div>
+
+                <!-- MENU -->
+                <div class="hero-menu-row">
+                    <a href="{% url 'home' %}" class="hero-menu-btn">Home</a>
+                    <a href="{% url 'doctors' %}" class="hero-menu-btn">See Doctors</a>
+                     <a href="{% url 'my_appointments' %}" class="hero-menu-btn">Book Appointment</a>
+                  <a href="{% url 'drugs' %}" class="hero-menu-btn">Drugs & Supplements</a>
+                    <a href="{% url 'health_library' %}" class="hero-menu-btn">Health Library</a>
+            
+                    <a href="{% url 'research' %}" class="hero-menu-btn">Research & Education</a>
+            
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- 🔔 MESSAGES -->
+    {% if messages %}
+        <div class="container mt-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags|default:'info' }} shadow-sm">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- ✅ MAIN CONTENT -->
+    <main class="mt-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- ✅ FOOTER -->
+    <footer class="site-footer mt-5">
+        <div class="container footer-card">
+
+            <div class="row g-5">
+
+                <div class="col-lg-6">
+                    <h3 class="footer-title">About Medicare ></h3>
+                    <div class="footer-links-block">
+                        <p>About this Site</p>
+                        <p>Contact Us</p>
+                        <p>Locations</p>
+                        <p>Health Information Policy</p>
+                        <p>Medicare Accountable Care Organization (ACO)</p>
+                        <p>Media Requests</p>
+                        <p>News Network</p>
+                        <p>Price Transparency</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <h3 class="footer-title">Researchers</h3>
+                    <div class="footer-links-block mb-4">
+                        <p>Research Faculty</p>
+                        <p>Laboratories</p>
+                    </div>
+
+                    <h3 class="footer-title">International Patients</h3>
+                    <div class="footer-links-block">
+                        <p>Appointments</p>
+                        <p>Financial Services</p>
+                        <p>Appointment Services Offices</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-follow">
+                <h3 class="footer-title mb-3">Follow Medicare:</h3>
+                <div class="social-row">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+            </div>
+
+            <p class="footer-copy">
+                © 2025-2026 Medicare Foundation for Medical Education and Research. All rights reserved.
+            </p>
+
+        </div>
+    </footer>
+
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

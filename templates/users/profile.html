@@ -1,0 +1,58 @@
+﻿{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profile | Medicare{% endblock %}
+
+{% block content %}
+<section class="my-5">
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                    <span class="section-label">Patient Profile</span>
+                    <h2 class="fw-bold mt-3">{{ request.user.get_full_name|default:request.user.username }}</h2>
+                    <p class="text-muted mb-2">{{ request.user.email }}</p>
+                    <hr>
+                    <p class="mb-2"><i class="fa-solid fa-phone me-2 text-primary"></i>{{ request.user.profile.phone_number|default:"Add your phone number" }}</p>
+                    <p class="mb-2"><i class="fa-solid fa-location-dot me-2 text-primary"></i>{{ request.user.profile.city|default:"Add your city" }}</p>
+                    <p class="mb-0"><i class="fa-solid fa-notes-medical me-2 text-primary"></i>{{ request.user.profile.health_note|default:"Add a small health note" }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-lg-5">
+                    <span class="section-label">Edit Details</span>
+                    <h2 class="fw-bold mt-3 mb-3">Update your profile</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ user_form|crispy }}
+                        {{ profile_form|crispy }}
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm mt-4">
+        <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+                <h4 class="fw-bold mb-0">Recent Appointments</h4>
+                <a href="{% url 'my_appointments' %}" class="btn btn-outline-primary btn-sm">View All</a>
+            </div>
+            {% for appointment in appointments %}
+                <div class="d-flex justify-content-between align-items-center py-3 border-top gap-3 flex-wrap">
+                    <div>
+                        <h6 class="fw-bold mb-1">{{ appointment.doctor.name }}</h6>
+                        <p class="text-muted mb-0">{{ appointment.appointment_date }} at {{ appointment.appointment_time }}</p>
+                    </div>
+                    <span class="badge rounded-pill status-badge status-{{ appointment.status }}">{{ appointment.get_status_display }}</span>
+                </div>
+            {% empty %}
+                <p class="text-muted mb-0">No appointments yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
