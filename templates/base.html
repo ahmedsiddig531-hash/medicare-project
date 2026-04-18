@@ -47,12 +47,12 @@
             <i class="fa-regular fa-user"></i> Profile
         </a>
 
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit" class="mini-pill">
-                Logout
-            </button>
-        </form>
+         <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="mini-pill">
+        <i class="fa-regular fa-user"></i> Logout
+    </button>
+</form>
 
     {% else %}
 
